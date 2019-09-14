@@ -8,7 +8,7 @@
               <div class="headline">さあ、プログラミングを始めてください！</div>
               <span>
                 参加はこちらから:
-                <a href="https://us04web.zoom.us/j/914013185">参加する</a>
+                <a href="https://us04web.zoom.us/j/574858288" target="_blank">参加する</a>
               </span>
             </div>
           </v-card-title>
