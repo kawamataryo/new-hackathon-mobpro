@@ -37,12 +37,9 @@
     <v-toolbar app>
       <v-toolbar-side-icon @click.stop="updateNaviBar"></v-toolbar-side-icon>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Firebase</span>
+        <span>モブプロ</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat><router-link to="/hello">hello</router-link></v-btn>
-      </v-toolbar-items>
     </v-toolbar>
 
     <v-content>
