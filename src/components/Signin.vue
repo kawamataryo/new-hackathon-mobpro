@@ -16,7 +16,7 @@ export default {
       ],
       callbacks: {
         signInSuccessWithAuthResult() {
-          window.location.href = '/'
+          window.location.href = '/wantedly'
         }
       }
         }
