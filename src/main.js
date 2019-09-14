@@ -5,6 +5,9 @@ import router from '@/router'
 import store from '@/store/index.js';
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import "@/registerServiceWorker";
+import { firestorePlugin } from 'vuefire';
+
+Vue.use(firestorePlugin);
 
 new Vue({
   router,

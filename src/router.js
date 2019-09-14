@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Top from '@/views/Top'
 import Signin from '@/components/Signin'
 import Signout from '@/views/Signout'
+import Wantedly from '@/views/Wantedly'
 
 import firebase from 'firebase'
 
@@ -27,7 +28,12 @@ const router = new VueRouter({
             name: 'signout',
             component: Signout,
             meta: { requiresAuth: true }
-        }
+        },
+        {
+          path: '/wantedly',
+          name: 'wantedly',
+          component: Wantedly,
+        },
     ]
 })
 

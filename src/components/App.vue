@@ -61,6 +61,10 @@ import firebaseConfig from '@/firebase/firebase';
 
 import store from '@/store/index.js';
 
+firebase.initializeApp(firebaseConfig);
+
+export const db = firebase.firestore();
+
 export default {
   name: 'App',
   data () {
@@ -69,7 +73,6 @@ export default {
     }
   },
   created() {
-    firebase.initializeApp(firebaseConfig);
 
     // for messaging
     if (firebase.messaging.isSupported() && firebaseConfig.messageKey) {
