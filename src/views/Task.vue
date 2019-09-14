@@ -1,42 +1,75 @@
 <template>
-  <div>
-    <h1>さあ、プログラミングを始めてください！</h1>
-    <div>
-      参加はこちらから:
-      <a href="https://us04web.zoom.us/j/914013185">参加する</a>
-    </div>
-    <div v-if="result !== 'ok'">
-      <button v-if="!gachaOpened" v-on:click="openGacha">ガチャを引く！</button>
-      <div v-if="gachaOpened">
-        <h2>課題はこちら！</h2>
-        <dl>
-          <dt>言語</dt>
-          <dd>JavaScript</dd>
-          <dt>課題</dt>
-          <dd>ソートプログラム</dd>
-        </dl>
-        <dl>
-          <dt>入力</dt>
-          <dd>
-            <pre>3 2 1</pre>
-          </dd>
-          <dt>出力</dt>
-          <dd>
-            <pre>1 2 3</pre>
-          </dd>
-        </dl>
-        <form v-on:submit="submitForm">
-          <textarea placeholder="ここにコードを貼り付けてください" cols="10" rows="10" v-model="code"></textarea>
-          <button>提出する</button>
-        </form>
-      </div>
-    </div>
-    <div v-if="result === 'ok'">おめでとうございます！</div>
-  </div>
+  <v-container grid-list-xl>
+    <v-layout row wrap>
+      <v-flex xs10 offset-xs1>
+        <v-card class="mb-3">
+          <v-card-title primary-title>
+            <div>
+              <div class="headline">さあ、プログラミングを始めてください！</div>
+              <span>
+                参加はこちらから:
+                <a href="https://us04web.zoom.us/j/914013185">参加する</a>
+              </span>
+            </div>
+          </v-card-title>
+
+          <v-card-actions>
+            <v-btn flat color="orange" v-on:click="openGacha">課題ガチャを引く</v-btn>
+          </v-card-actions>
+        </v-card>
+
+        <v-card class="mb-3" v-if="gachaOpened">
+          <v-card-title primary-title>
+            <div>
+              <div class="headline">課題はこちら！</div>
+              <div>
+                ■ 言語:
+                <strong>JavaScript</strong>
+              </div>
+              <div>
+                ■ 課題:
+                <strong>ソートプログラム</strong>
+              </div>
+              <div>
+                ■ 入力値:
+                <code>3 2 1</code>
+              </div>
+              <div>
+                ■ 出力値:
+                <code>1 2 3</code>
+              </div>
+            </div>
+          </v-card-title>
+        </v-card>
+
+        <v-card v-if="gachaOpened">
+          <form v-on:submit="submitForm">
+            <v-card-title primary-title>
+              <div>
+                <div class="headline">こちらから提出してください</div>
+                <v-textarea
+                  name="input-7-1"
+                  label="回答"
+                  hint="ここにコードを貼り付けてください"
+                  placeholder="ここにコードを貼り付けてください"
+                  v-model="code"
+                ></v-textarea>
+              </div>
+            </v-card-title>
+
+            <v-card-actions>
+              <v-btn flat color="orange" v-on:click="submitForm">提出する</v-btn>
+            </v-card-actions>
+          </form>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
 import firebase from "firebase/app";
+// eslint-disable-next-line
 import functions from "firebase/functions";
 // ローカル実行用
 // firebase.functions().useFunctionsEmulator(`http://localhost:5000`);
@@ -72,6 +105,8 @@ export default {
           this.result = res;
           if (this.result == "ng") {
             alert("残念！再提出してください。");
+          } else {
+            alert("おめでとうございます！");
           }
         })
         .catch(console.error);
