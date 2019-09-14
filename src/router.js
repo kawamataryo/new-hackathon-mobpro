@@ -35,11 +35,6 @@ const router = new VueRouter({
         name: 'wantedly',
         component: Wantedly,
     },
-    {
-        path: '/task',
-        name: 'task',
-        component: Task,
-    },
     ]
 })
 
