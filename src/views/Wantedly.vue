@@ -19,7 +19,7 @@
         </v-card-title>
 
         <v-card-actions>
-          <v-btn color="primary" style="width: 100%">Start</v-btn>
+          <v-btn color="primary" style="width: 100%" to="/task">Start</v-btn>
         </v-card-actions>
       </v-card>
     </div>
