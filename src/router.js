@@ -5,6 +5,7 @@ import Top from '@/views/Top'
 import Signin from '@/components/Signin'
 import Signout from '@/views/Signout'
 import Wantedly from '@/views/Wantedly'
+import Task from '@/views/Task'
 
 import firebase from 'firebase'
 
@@ -33,6 +34,11 @@ const router = new VueRouter({
           path: '/wantedly',
           name: 'wantedly',
           component: Wantedly,
+        },
+        {
+          path: '/task',
+          name: 'task',
+          component: Task,
         },
     ]
 })
