@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app' 
+import firebase from 'firebase/app'
 import "firebase/auth"
 import "firebase/firestore"
 import "firebase/messaging"
@@ -79,7 +79,7 @@ export default {
       // Request Permission of Notifications
       messaging.requestPermission().then(() => {
         console.log('Notification permission granted.');
-        
+
         // Get Token
         messaging.getToken().then((token) => {
           console.log(token)
@@ -88,7 +88,7 @@ export default {
         console.log('Unable to get permission to notify.', err);
       });
     }
-    store.dispatch('setUser', { }) 
+    store.dispatch('setUser', { })
   },
   computed: {
     logined() {
