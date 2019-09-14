@@ -1,31 +1,27 @@
 import * as functions from 'firebase-functions'
 
 //
-// # request (application/x-www-form-urlencoded)
-// - "language_name": "js",
-// - "task_name": "sort",
-// - "answer": "コードがそのまま入っている"
+// # request
+// {
+//   "language_name": "js",
+//   "task_name": "sort",
+//   "code": "コードがそのまま入っている"
+// }
 //
 // # response
 // {
 //   "result": "ok"
 // }
 //
-export const submitAnswer = functions.https.onRequest((request, response) => {
-  if (request.method !== "POST") {
-    response.status(405).end()
-  }
-  const requestData = request.body
-  const languageName = requestData.language_name
-  const taskName = requestData.task_name
-  const code = requestData.answer
+export const submitAnswer = functions.https.onCall((data, context) => {
+  const languageName = data.language_name
+  const taskName = data.task_name
+  const code = data.code
 
   const execResult = execAnswer(languageName, taskName, code)
-  const result = {
+  return {
     result: execResult ? 'ok' : 'ng'
   }
-
-  response.status(201).json(result)
 })
 
 function execAnswer(languageName: string, taskName: string, code: string): boolean {
