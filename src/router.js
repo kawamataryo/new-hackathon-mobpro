@@ -15,38 +15,38 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [{
-            path: '/',
-            name: 'index',
-            component: Top
-        },
-        {
-            path: '/Signin',
-            name: 'signin',
-            component: Signin
-        },
-        {
-            path: '/Signout',
-            name: 'signout',
-            component: Signout,
-            meta: { requiresAuth: true }
-        },
-        {
-          path: '/wantedly',
-          name: 'wantedly',
-          component: Wantedly,
-        },
-        {
-          path: '/task',
-          name: 'task',
-          component: Task,
-        },
+        path: '/',
+        name: 'index',
+        component: Top
+    },
+    {
+        path: '/Signin',
+        name: 'signin',
+        component: Signin
+    },
+    {
+        path: '/Signout',
+        name: 'signout',
+        component: Signout,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/wantedly',
+        name: 'wantedly',
+        component: Wantedly,
+    },
+    {
+        path: '/task',
+        name: 'task',
+        component: Task,
+    },
     ]
 })
 
 router.beforeEach((to, from, next) => {
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
     if (requiresAuth) {
-        firebase.auth().onAuthStateChanged(function(user) {
+        firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 next()
             } else {
